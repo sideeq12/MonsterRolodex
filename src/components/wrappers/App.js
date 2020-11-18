@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {CardList} from "../cardList"
+import {CardList} from "../cardList";
+import {SearchBox} from "../searchBox"
 
 let style ={
     backgroundColor : "#839b97"
@@ -37,14 +38,11 @@ class App extends Component{
             <div className="App" style={style}>
             <div style={{display : "flex", flexDirection : "column", justifyContent : "center", alignItems : "center"}}>
             <h1 style={head}>Monster Rolodex</h1>
-            <input type="search" placeholder="search monters..." 
-            onChange={
-                e => { this.setState({searchField : e.target.value});
-                 console.log(searchField)}
-            }
-            className="form-control" style={{width : "250px"}} />
-            </div>
             
+            <SearchBox placeholder="search monsters..." handlechange={
+                 e => { this.setState({searchField : e.target.value});} }
+             />
+                 </div>
             <CardList monsters={filteredmosters} />
         </div>
         )
