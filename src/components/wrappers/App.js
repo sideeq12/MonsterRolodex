@@ -28,8 +28,10 @@ class App extends Component{
 
     render(){
         const {monsters, searchField} = this.state;
-        const filteredmosters = monsters.filter(monster =>{
-            monster.name.toLowerCase().includes(searchField.toLowerCase())
+        const filteredmosters = monsters.filter(inn =>{
+           let name = inn.name.toLowerCase();
+           let search = searchField.toLowerCase();
+           return name.includes(search)
         })
         return(
             <div className="App" style={style}>
@@ -37,14 +39,13 @@ class App extends Component{
             <h1 style={head}>Monster Rolodex</h1>
             <input type="search" placeholder="search monters..." 
             onChange={
-                e =>{
-                    this.setState({searchField : e.target.value})
-                }
+                e => { this.setState({searchField : e.target.value});
+                 console.log(searchField)}
             }
             className="form-control" style={{width : "250px"}} />
             </div>
             
-            <CardList monsters={this.state.monsters} />
+            <CardList monsters={filteredmosters} />
         </div>
         )
     }
