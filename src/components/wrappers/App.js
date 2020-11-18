@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {CardList} from "../cardList"
 
 class App extends Component{
     constructor(){
@@ -18,9 +19,10 @@ class App extends Component{
         return(
             <div className="App">
         {this.state.monsters.map(monster =>(
-         <h2 key={monster.id} >{monster.name}</h2>
+            <CardList name="pop" key={monster.id} >{monster.name} </CardList>
          )
          )}
+         
         </div>
         )
     }
